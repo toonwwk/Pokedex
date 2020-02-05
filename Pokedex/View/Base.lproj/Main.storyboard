@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="liU-WE-4VP">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Toon-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="PokemonListViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zo6-Dp-SFl">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <color key="barTintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0Vn-FM-nPX">
+                                <rect key="frame" x="2" y="146" width="410" height="748"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DlH-bg-SMv">
+                                    <size key="itemSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0Vn-FM-nPX" secondAttribute="trailing" constant="2" id="0YZ-C1-oRb"/>
+                            <constraint firstItem="0Vn-FM-nPX" firstAttribute="top" secondItem="zo6-Dp-SFl" secondAttribute="bottom" constant="2" id="Nx2-uW-6Kx"/>
+                            <constraint firstItem="zo6-Dp-SFl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Xf6-z6-ObG"/>
+                            <constraint firstItem="zo6-Dp-SFl" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="jH3-7t-lxb"/>
+                            <constraint firstItem="0Vn-FM-nPX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="2" id="nik-XW-rEM"/>
+                            <constraint firstAttribute="bottom" secondItem="0Vn-FM-nPX" secondAttribute="bottom" constant="2" id="s55-2c-sBG"/>
+                            <constraint firstItem="zo6-Dp-SFl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="u9D-jG-1eK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Toon" id="Rwr-RE-t24"/>
+                    <connections>
+                        <outlet property="collectionView" destination="0Vn-FM-nPX" id="Be8-og-HAs"/>
+                        <outlet property="searchBar" destination="zo6-Dp-SFl" id="5LX-ea-4Wi"/>
+                        <segue destination="fZB-Mu-NPy" kind="show" identifier="ShowPokemonData" id="yPK-sD-5S8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1952.1739130434785" y="137.94642857142856"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="72V-KB-4zC">
+            <objects>
+                <viewController id="fZB-Mu-NPy" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5fK-LJ-CsC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="RER-bS-ptS"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="otb-hB-Bfx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fE4-W1-ARn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2833.3333333333335" y="139.95535714285714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="A2H-z6-F6N">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="liU-WE-4VP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZTl-8k-wxA">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="007-0U-pau"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RDT-rX-eYD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+</document>
