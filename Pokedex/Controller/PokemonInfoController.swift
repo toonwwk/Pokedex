@@ -48,7 +48,7 @@ class PokemonInfoController : UIViewController{
     }
     
 }
-
+// MARK: - for pokemon descripton
 extension PokemonInfoController{
     func fetchDescriptionAndEvoData(_ url: URL){
         AF.request(url).responseJSON { response in
@@ -77,7 +77,7 @@ extension PokemonInfoController{
         }
     }
 }
-
+// MARK: - for pokemon base stats
 extension PokemonInfoController{
     func fetchBasicInfoData(){
         let url = Constants.basePokemonUrl + String(pokemon.id) + "/"

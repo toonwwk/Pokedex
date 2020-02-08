@@ -33,8 +33,6 @@ class PokemonListViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ReusableCell")
         collectionView.decelerationRate = .normal
-        //        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
-        //        collectionView.refreshControl = refreshControl
         
         searchBar.rx.text.orEmpty.asObservable().subscribe(
             onNext: { pokemonName in
@@ -44,12 +42,7 @@ class PokemonListViewController: UIViewController {
         )
         
     }
-    //    @objc func loadData() {
-    //        isSearching = false
-    //        collectionView.reloadData()
-    //
-    //    }
-    
+    // MARK: - For searching pokemon name
     func filterPokemon(name: String){
         if name != "" {
             filterPokemonList = pokemonList.filter({
@@ -74,7 +67,7 @@ extension PokemonListViewController: UISearchBarDelegate{
 }
 
 
-
+// MARK: - set data source
 extension PokemonListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isSearching{
@@ -101,7 +94,7 @@ extension PokemonListViewController: UICollectionViewDataSource {
         return cell
     }
 }
-
+// MARK: - perform segue
 extension PokemonListViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedPokemonId = indexPath.row
@@ -126,7 +119,7 @@ extension PokemonListViewController{
         }
     }
 }
-
+// MARK: - set number of cell in a row
 extension PokemonListViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let yourWidth = collectionView.bounds.width/3.0 - 2.0
