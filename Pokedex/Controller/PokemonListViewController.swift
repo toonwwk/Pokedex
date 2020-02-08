@@ -20,8 +20,10 @@ class PokemonListViewController: UIViewController {
     var filterPokemonList: [PokemonModel] = []
     var selectedPokemonId: Int!
     var isSearching = false
-//    var refreshControl = UIRefreshControl()
-
+    var imageCache = NSCache<NSString, UIImage>()
+    
+    //    var refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pokemonListManeger.delegate = self
@@ -31,22 +33,22 @@ class PokemonListViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ReusableCell")
         collectionView.decelerationRate = .normal
-//        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
-//        collectionView.refreshControl = refreshControl
+        //        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
+        //        collectionView.refreshControl = refreshControl
         
         searchBar.rx.text.orEmpty.asObservable().subscribe(
-                onNext: { pokemonName in
-                    let name = pokemonName.lowercased()
-                    self.filterPokemon(name: name)
-            }
+            onNext: { pokemonName in
+                let name = pokemonName.lowercased()
+                self.filterPokemon(name: name)
+        }
         )
         
     }
-//    @objc func loadData() {
-//        isSearching = false
-//        collectionView.reloadData()
-//
-//    }
+    //    @objc func loadData() {
+    //        isSearching = false
+    //        collectionView.reloadData()
+    //
+    //    }
     
     func filterPokemon(name: String){
         if name != "" {
@@ -57,7 +59,7 @@ class PokemonListViewController: UIViewController {
         }
         else{
             isSearching = false
-
+            
         }
         collectionView.reloadData()
     }
@@ -82,7 +84,9 @@ extension PokemonListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReusableCell", for: indexPath) as! CollectionViewCell
+        
         if isSearching{
             let imagePath = self.filterPokemonList[indexPath.row].image
             cell.imageView.load(url: imagePath!)
@@ -93,6 +97,7 @@ extension PokemonListViewController: UICollectionViewDataSource {
             cell.imageView.load(url: imagePath!)
             cell.pokemonName.text = self.pokemonList[indexPath.row].name
         }
+        
         return cell
     }
 }
@@ -142,6 +147,7 @@ extension PokemonListViewController: UICollectionViewDelegateFlowLayout{
     }
     
 }
+
 
 extension PokemonListViewController: PokemonManagerDelegate {
     func didUpdatePokemon(_ pokemonManager: PokemonManager, pokemonList: [PokemonModel]) {
