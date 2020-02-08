@@ -18,7 +18,6 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAm-4c-x1P">
                         <rect key="frame" x="0.0" y="280" width="300" height="20"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="OtY-Fm-Azj"/>
                         </constraints>
@@ -33,7 +32,6 @@
                                 <rect key="frame" x="3" y="3" width="294" height="274"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="X8c-yr-toc" secondAttribute="bottom" constant="3" id="87f-Tw-0ph"/>
                             <constraint firstItem="X8c-yr-toc" firstAttribute="top" secondItem="PuF-gM-p40" secondAttribute="top" constant="3" id="PNj-0g-XCd"/>

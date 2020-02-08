@@ -36,13 +36,12 @@ struct PokemonManager {
         do {
             let data = try decoder.decode(PokemonData.self, from: pokemonData)
             var pokemonList: [PokemonModel] = []
-            for pokemon in 0 ..< data.results.count{
-                let name = data.results[pokemon].name.replacingOccurrences(of: "-", with: " ")
-                var id = data.results[pokemon].url.replacingOccurrences(of: Constants.pokemonListUrl, with: "")
-                id.removeLast()
-                let frontImage = Constants.baseDefaultSprite + id + Constants.endDefaultSprite
-                id = String(format: "%03d", Int(id)!)
-                let pokemon = PokemonModel(name: name, image: frontImage, id: id)
+            for i in 0 ..<  data.results.count{
+                let name = data.results[i].name.replacingOccurrences(of: "-", with: " ")
+                let id = i+1
+                let frontImage = URL(string: Constants.baseDefaultSprite + String(id) + Constants.endSprite)
+                let shinyImage = URL(string: Constants.baseShinySprite + String(id) + Constants.endSprite)
+                let pokemon = PokemonModel(name: name, image: frontImage!, shinyImage: shinyImage!, id: id)
                 pokemonList.append(pokemon)
             }
             delegate?.didUpdatePokemon(self, pokemonList: pokemonList)

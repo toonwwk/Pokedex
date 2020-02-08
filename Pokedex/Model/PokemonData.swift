@@ -12,6 +12,6 @@ struct PokemonData : Decodable{
 }
 
 struct NameURL : Decodable{
-    let name:String
-    let url:String
+    let name: String
+    let url: String
 }

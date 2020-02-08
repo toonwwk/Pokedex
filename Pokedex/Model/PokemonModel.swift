@@ -9,6 +9,7 @@
 import Foundation
 struct PokemonModel{
     let name:String!
-    let image:String!
-    let id:String!
+    let image:URL!
+    let shinyImage: URL!
+    let id:Int!
 }

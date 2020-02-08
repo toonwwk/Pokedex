@@ -9,8 +9,8 @@
 import Foundation
 struct Constants {
     static let baseDefaultSprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
-    static let endDefaultSprite = ".png"
-    static let pokemonListUrl = "https://pokeapi.co/api/v2/pokemon/"
-    static let pokemonListLimitedUrl = pokemonListUrl + "?limit=10"
-
+    static let endSprite = ".png"
+    static let basePokemonUrl = "https://pokeapi.co/api/v2/pokemon/"
+    static let pokemonListLimitedUrl = basePokemonUrl + "?limit=807"
+    static let baseShinySprite = baseDefaultSprite + "shiny/"
 }
