@@ -32,8 +32,6 @@ class PokemonListViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ReusableCell")
-        collectionView.decelerationRate = .normal
-        
         searchBar.rx.text.orEmpty.asObservable().subscribe(
             onNext: { pokemonName in
                 let name = pokemonName.lowercased()
@@ -67,7 +65,7 @@ extension PokemonListViewController: UISearchBarDelegate{
 }
 
 
-// MARK: - set data source
+// MARK: - set data source, create cell in collection view
 extension PokemonListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isSearching{
@@ -146,7 +144,6 @@ extension PokemonListViewController: PokemonManagerDelegate {
     func didUpdatePokemon(_ pokemonManager: PokemonManager, pokemonList: [PokemonModel]) {
         self.pokemonList = pokemonList
         self.collectionView.reloadData()
-        self.collectionView.scrollsToTop = false
     }
     
     func didFailWithError(error: AFError) {
