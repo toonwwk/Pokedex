@@ -6,10 +6,10 @@
 - uses MVC pattern
 
 # What I've learnt from this 
-> The code in controller is quite messy and I've tried to look up MVVM pattern.
-> However, when I attemp to create new object for ViewModel, I can't initialized a variable in the decoder section.
-> Then I decide to stick with MVC pattern bacause at least it's work and I don't want to do a thing which I'm not really understand. I will look up for the MVVM more and hope I can do it in the futre
-  
+> The code in controller is quite messy and I've tried to look up about MVVM pattern. However, when I attemp to create new object for ViewModel, I can't initialized a variable in the decoder section. Then I decide to stick with MVC pattern bacause at least it's work and I don't want to do a thing which I'm not really understand. I will look up for the MVVM more and hope I can do it in the futre.  
+> I can't slove the problem of multiple loading of collection view but after I use Kingfisher, it works. I guess, I have to look up about the basic more.
+
+# Contact
 Kanokporn Wongwaitayakul  
 61090008@kmitl.ac.th  
 0830122282  
