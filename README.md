@@ -1,8 +1,8 @@
 # Pokedex
 - uses Alomofire and Codable for mapping JSON
 - uses CollectionView for displaying pokemon list
-- Auto layout fit on portrait orientation
-- use RxSwift for searching Pokemon name
+- uses auto layout for displaying on portrait orientation
+- uses RxSwift for searching Pokemon name
 - uses MVC pattern
 
 # What I've learnt from this 
