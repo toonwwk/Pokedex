@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import RxSwift
 import RxCocoa
-
+import Kingfisher
 class PokemonListViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -82,12 +82,12 @@ extension PokemonListViewController: UICollectionViewDataSource {
         
         if isSearching{
             let imagePath = self.filterPokemonList[indexPath.row].image
-            cell.imageView.load(url: imagePath!)
+            cell.imageView.kf.setImage(with: imagePath!)
             cell.pokemonName.text = self.filterPokemonList[indexPath.row].name
         }
         else{
             let imagePath = self.pokemonList[indexPath.row].image
-            cell.imageView.load(url: imagePath!)
+            cell.imageView.kf.setImage(with: imagePath!)
             cell.pokemonName.text = self.pokemonList[indexPath.row].name
         }
         

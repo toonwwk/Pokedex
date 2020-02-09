@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import Alamofire
+import Kingfisher
 class PokemonInfoController : UIViewController{
     @IBOutlet weak var pokemonImageView: UIImageView!
     @IBOutlet weak var nameNumberLabel: UILabel!
@@ -28,7 +29,7 @@ class PokemonInfoController : UIViewController{
     }
     
     func setupPokemonInfo(){
-        pokemonImageView.load(url: pokemon.image)
+        pokemonImageView.kf.setImage(with: pokemon.image)
         pokemonImageView.layer.cornerRadius = pokemonImageView.frame.size.width / 2
         pokemonImageView.clipsToBounds = true
         let id = String(format: "%03d", Int(pokemon.id))
@@ -39,9 +40,9 @@ class PokemonInfoController : UIViewController{
         switch sender.selectedSegmentIndex
         {
         case 0:
-            pokemonImageView.load(url: pokemon.image)
+            pokemonImageView.kf.setImage(with: pokemon.image)
         case 1:
-            pokemonImageView.load(url: pokemon.shinyImage)
+            pokemonImageView.kf.setImage(with: pokemon.shinyImage) 
         default:
             break
         }
