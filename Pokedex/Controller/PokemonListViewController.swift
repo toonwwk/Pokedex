@@ -21,8 +21,11 @@ class PokemonListViewController: UIViewController {
     var selectedPokemonId: Int!
     var isSearching = false
     var imageCache = NSCache<NSString, UIImage>()
-    
-    //    var refreshControl = UIRefreshControl()
+    let refreshPokemon: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,8 @@ class PokemonListViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ReusableCell")
+        collectionView.refreshControl = refreshPokemon
+        
         searchBar.rx.text.orEmpty.asObservable().subscribe(
             onNext: { pokemonName in
                 let name = pokemonName.lowercased()
@@ -55,6 +60,19 @@ class PokemonListViewController: UIViewController {
         collectionView.reloadData()
     }
     
+}
+
+// MARK: - For refresh
+extension PokemonListViewController{
+    @objc func refresh(_ sender: UIRefreshControl){
+        isSearching = false
+        searchBar.endEditing(true)
+        searchBar.text = ""
+        pokemonList.removeAll()
+        collectionView.reloadData()
+        pokemonListManeger.fetchData()
+        sender.endRefreshing()
+    }
 }
 
 extension PokemonListViewController: UISearchBarDelegate{
